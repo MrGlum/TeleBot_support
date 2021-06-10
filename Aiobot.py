@@ -1,7 +1,7 @@
 from aiogram.bot.api import compose_data
-from aiogram.types import message
+from aiogram.types import chat, message
 import config
-#import aiogram
+import all_que
 
 from aiogram import Bot, Dispatcher, executor, types
 
@@ -14,7 +14,8 @@ API_TOKEN = config.TOKEN
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
-vopros = open("all_que.txt", "r")
+vopros = all_que.otvet
+
 
 @dp.message_handler(commands=['start', 'help', "info", "info@My_best_aw_bot", "help@My_best_aw_bot", "start@My_best_aw_bot"])
 async def send_welcome(message: types.Message):
@@ -22,17 +23,19 @@ async def send_welcome(message: types.Message):
     await message.forward(125939380, message)
 
 
-# @dp.message_handler()
-# async def echo(message: types.Message):
-#    await message.answer(message.text)
-
-
 @dp.message_handler()
-async def SuperMegaBrain(message: types.Message):
-    await message.answer(compose_data(message, vopros))
-#    for message.text in vopros.keys():
-#        await message.answer(vopros.items[message.text])
-#        await message.answer("Не понятно!")
+async def TEST_1(message: types.Message):
+    otvetik = compose_data(vopros)
+    await message.answer(str(otvetik[1]))
+
+
+# @dp.message_handler()
+# async def SuperMegaBrain(message: types.message):
+#    for message in vopros.keys():
+#        if message == vopros.keys():
+#            await message.answer(map(str,vopros.values(message.text)))
+#        else:
+#            await message.answer("Не понятно!")
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
