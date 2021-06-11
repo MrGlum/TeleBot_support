@@ -25,7 +25,7 @@ async def send_welcome(message: types.Message):
 
 @dp.message_handler()
 async def TEST_1(message: types.Message):
-    otvetik = compose_data(vopros)
+    otvetik = compose_data(params=vopros)
     await message.answer(str(otvetik[1]))
 
 
