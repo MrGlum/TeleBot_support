@@ -1,0 +1,445 @@
+18:11:36 - Aiobot - INFO - <module>: 17 - Hello
+18:11:36 - proactor_events - DEBUG - __init__: 623 - Using proactor: IocpProactor
+18:11:36 - api - DEBUG - make_request: 133 - Make request: "getMe" with data: "{}" and files "None"
+18:11:36 - api - DEBUG - check_result: 95 - Response for getMe: [200] "'{"ok":true,"result":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot","can_join_groups":true,"can_read_all_group_messages":true,"supports_inline_queries":false}}'"
+18:11:36 - executor - INFO - _welcome: 362 - Bot: My_best_aw_bot [@My_best_aw_bot]
+18:11:36 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+18:11:36 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+18:11:36 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': -1, 'timeout': 1}" and files "None"
+18:11:38 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:11:38 - executor - WARNING - _skip_updates: 358 - Updates were skipped successfully.
+18:11:38 - dispatcher - INFO - start_polling: 360 - Start polling.
+18:11:38 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+18:11:38 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+18:11:38 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+18:11:55 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069244,\n"message":{"message_id":1069,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623589853,"text":"/help@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}]}'"
+18:11:55 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:11:55 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет, ', 'parse_mode': 'Alex', 'entities': ' с тобой скоро свяжуться!', 'reply_to_message_id': 1069}" and files "None"
+18:11:56 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069245, 'timeout': 20}" and files "None"
+18:11:56 - api - DEBUG - check_result: 95 - Response for sendMessage: [400] "'{"ok":false,"error_code":400,"description":"Bad Request: unsupported parse_mode"}'"
+18:11:56 - base_events - ERROR - default_exception_handler: 1738 - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py:409> exception=BadRequest('Unsupported parse_mode')>
+Traceback (most recent call last):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 417, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 238, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 259, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Users\pashencev.alexandr\Documents\VS материалы по кодингу\TeleBot_support\TeleBot_support\Aiobot.py", line 33, in send_help
+    await message.reply("Привет, ", voprositel, " с тобой скоро свяжуться!")
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\types\message.py", line 1500, in reply
+    return await self.bot.send_message(
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\bot.py", line 314, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\utils\exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Unsupported parse_mode
+18:12:16 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:12:16 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069245, 'timeout': 20}" and files "None"
+18:12:36 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:12:37 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069245, 'timeout': 20}" and files "None"
+18:12:57 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:12:57 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069245, 'timeout': 20}" and files "None"
+18:13:17 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:13:17 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069245, 'timeout': 20}" and files "None"
+18:13:33 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069245,\n"message":{"message_id":1070,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623589950,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}]}'"
+18:13:33 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:13:33 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет! Ты можешь задать вопрос прямо в чате, если тебе нужна справка напиши /info.\nЕсли не помогло напиши /help', 'reply_to_message_id': 1070}" and files "None"
+18:13:33 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069246, 'timeout': 20}" and files "None"
+18:13:33 - api - DEBUG - check_result: 95 - Response for sendMessage: [200] "'{"ok":true,"result":{"message_id":1071,"from":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623589950,"reply_to_message":{"message_id":1070,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623589950,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]},"text":"\\u041f\\u0440\\u0438\\u0432\\u0435\\u0442! \\u0422\\u044b \\u043c\\u043e\\u0436\\u0435\\u0448\\u044c \\u0437\\u0430\\u0434\\u0430\\u0442\\u044c \\u0432\\u043e\\u043f\\u0440\\u043e\\u0441 \\u043f\\u0440\\u044f\\u043c\\u043e \\u0432 \\u0447\\u0430\\u0442\\u0435, \\u0435\\u0441\\u043b\\u0438 \\u0442\\u0435\\u0431\\u0435 \\u043d\\u0443\\u0436\\u043d\\u0430 \\u0441\\u043f\\u0440\\u0430\\u0432\\u043a\\u0430 \\u043d\\u0430\\u043f\\u0438\\u0448\\u0438 /info.\\n\\u0415\\u0441\\u043b\\u0438 \\u043d\\u0435 \\u043f\\u043e\\u043c\\u043e\\u0433\\u043b\\u043e \\u043d\\u0430\\u043f\\u0438\\u0448\\u0438 /help","entities":[{"offset":77,"length":5,"type":"bot_command"},{"offset":107,"length":5,"type":"bot_command"}]}}'"
+18:13:43 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069246,\n"message":{"message_id":1072,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623589960,"text":"/info@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}]}'"
+18:13:43 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:13:43 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет! Ты можешь задать вопрос прямо в чате, если тебе нужна справка напиши /info.\nЕсли не помогло напиши /help', 'reply_to_message_id': 1072}" and files "None"
+18:13:43 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069247, 'timeout': 20}" and files "None"
+18:13:43 - api - DEBUG - check_result: 95 - Response for sendMessage: [200] "'{"ok":true,"result":{"message_id":1073,"from":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623589960,"reply_to_message":{"message_id":1072,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623589960,"text":"/info@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]},"text":"\\u041f\\u0440\\u0438\\u0432\\u0435\\u0442! \\u0422\\u044b \\u043c\\u043e\\u0436\\u0435\\u0448\\u044c \\u0437\\u0430\\u0434\\u0430\\u0442\\u044c \\u0432\\u043e\\u043f\\u0440\\u043e\\u0441 \\u043f\\u0440\\u044f\\u043c\\u043e \\u0432 \\u0447\\u0430\\u0442\\u0435, \\u0435\\u0441\\u043b\\u0438 \\u0442\\u0435\\u0431\\u0435 \\u043d\\u0443\\u0436\\u043d\\u0430 \\u0441\\u043f\\u0440\\u0430\\u0432\\u043a\\u0430 \\u043d\\u0430\\u043f\\u0438\\u0448\\u0438 /info.\\n\\u0415\\u0441\\u043b\\u0438 \\u043d\\u0435 \\u043f\\u043e\\u043c\\u043e\\u0433\\u043b\\u043e \\u043d\\u0430\\u043f\\u0438\\u0448\\u0438 /help","entities":[{"offset":77,"length":5,"type":"bot_command"},{"offset":107,"length":5,"type":"bot_command"}]}}'"
+18:14:03 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:14:03 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069247, 'timeout': 20}" and files "None"
+18:14:24 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:14:24 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069247, 'timeout': 20}" and files "None"
+18:14:44 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:14:44 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069247, 'timeout': 20}" and files "None"
+18:14:54 - Aiobot - INFO - <module>: 17 - Hello
+18:14:54 - proactor_events - DEBUG - __init__: 623 - Using proactor: IocpProactor
+18:14:54 - api - DEBUG - make_request: 133 - Make request: "getMe" with data: "{}" and files "None"
+18:14:54 - api - DEBUG - check_result: 95 - Response for getMe: [200] "'{"ok":true,"result":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot","can_join_groups":true,"can_read_all_group_messages":true,"supports_inline_queries":false}}'"
+18:14:54 - executor - INFO - _welcome: 362 - Bot: My_best_aw_bot [@My_best_aw_bot]
+18:14:54 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+18:14:54 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+18:14:54 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': -1, 'timeout': 1}" and files "None"
+18:14:56 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:14:56 - executor - WARNING - _skip_updates: 358 - Updates were skipped successfully.
+18:14:56 - dispatcher - INFO - start_polling: 360 - Start polling.
+18:14:56 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+18:14:56 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+18:14:56 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+18:15:03 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069247,\n"message":{"message_id":1074,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590040,"text":"/help","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}]}'"
+18:15:03 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:15:03 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет, ', 'parse_mode': 'Alex', 'entities': ' с тобой скоро свяжуться!', 'reply_to_message_id': 1074}" and files "None"
+18:15:03 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069248, 'timeout': 20}" and files "None"
+18:15:03 - api - DEBUG - check_result: 95 - Response for sendMessage: [400] "'{"ok":false,"error_code":400,"description":"Bad Request: unsupported parse_mode"}'"
+18:15:03 - base_events - ERROR - default_exception_handler: 1738 - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py:409> exception=BadRequest('Unsupported parse_mode')>
+Traceback (most recent call last):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 417, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 238, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 259, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Users\pashencev.alexandr\Documents\VS материалы по кодингу\TeleBot_support\TeleBot_support\Aiobot.py", line 34, in send_help
+    await message.reply("Привет, ", voprositel, " с тобой скоро свяжуться!")
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\types\message.py", line 1500, in reply
+    return await self.bot.send_message(
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\bot.py", line 314, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\utils\exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Unsupported parse_mode
+18:15:24 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:15:24 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069248, 'timeout': 20}" and files "None"
+18:15:44 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:15:44 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069248, 'timeout': 20}" and files "None"
+18:16:05 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:16:05 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069248, 'timeout': 20}" and files "None"
+18:16:25 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:16:25 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069248, 'timeout': 20}" and files "None"
+18:16:46 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:16:46 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069248, 'timeout': 20}" and files "None"
+18:17:06 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:17:06 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069248, 'timeout': 20}" and files "None"
+18:17:27 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:17:27 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069248, 'timeout': 20}" and files "None"
+18:17:32 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069248,\n"message":{"message_id":1075,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590189,"text":"/help@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}]}'"
+18:17:32 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:17:32 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет, ', 'parse_mode': 'Alex', 'entities': ' с тобой скоро свяжуться!', 'reply_to_message_id': 1075}" and files "None"
+18:17:32 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069249, 'timeout': 20}" and files "None"
+18:17:32 - api - DEBUG - check_result: 95 - Response for sendMessage: [400] "'{"ok":false,"error_code":400,"description":"Bad Request: unsupported parse_mode"}'"
+18:17:32 - base_events - ERROR - default_exception_handler: 1738 - Task exception was never retrieved
+future: <Task finished name='Task-21' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py:409> exception=BadRequest('Unsupported parse_mode')>
+Traceback (most recent call last):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 417, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 238, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 259, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Users\pashencev.alexandr\Documents\VS материалы по кодингу\TeleBot_support\TeleBot_support\Aiobot.py", line 34, in send_help
+    await message.reply("Привет, ", voprositel, " с тобой скоро свяжуться!")
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\types\message.py", line 1500, in reply
+    return await self.bot.send_message(
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\bot.py", line 314, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\utils\exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Unsupported parse_mode
+18:17:52 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:17:52 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069249, 'timeout': 20}" and files "None"
+18:17:54 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069249,\n"message":{"message_id":1076,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590211,"text":"/help@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}]}'"
+18:17:54 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:17:54 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет, ', 'parse_mode': 'Alex', 'entities': ' с тобой скоро свяжуться!', 'reply_to_message_id': 1076}" and files "None"
+18:17:54 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069250, 'timeout': 20}" and files "None"
+18:17:54 - api - DEBUG - check_result: 95 - Response for sendMessage: [400] "'{"ok":false,"error_code":400,"description":"Bad Request: unsupported parse_mode"}'"
+18:17:54 - base_events - ERROR - default_exception_handler: 1738 - Task exception was never retrieved
+future: <Task finished name='Task-27' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py:409> exception=BadRequest('Unsupported parse_mode')>
+Traceback (most recent call last):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 417, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 238, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 259, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Users\pashencev.alexandr\Documents\VS материалы по кодингу\TeleBot_support\TeleBot_support\Aiobot.py", line 34, in send_help
+    await message.reply("Привет, ", voprositel, " с тобой скоро свяжуться!")
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\types\message.py", line 1500, in reply
+    return await self.bot.send_message(
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\bot.py", line 314, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\utils\exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Unsupported parse_mode
+18:18:00 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069250,\n"message":{"message_id":1077,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590217,"text":"/info@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}]}'"
+18:18:00 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:18:00 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет! Ты можешь задать вопрос прямо в чате, если тебе нужна справка напиши /info.\nЕсли не помогло напиши /help', 'reply_to_message_id': 1077}" and files "None"
+18:18:00 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069251, 'timeout': 20}" and files "None"
+18:18:01 - api - DEBUG - check_result: 95 - Response for sendMessage: [200] "'{"ok":true,"result":{"message_id":1078,"from":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590218,"reply_to_message":{"message_id":1077,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590217,"text":"/info@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]},"text":"\\u041f\\u0440\\u0438\\u0432\\u0435\\u0442! \\u0422\\u044b \\u043c\\u043e\\u0436\\u0435\\u0448\\u044c \\u0437\\u0430\\u0434\\u0430\\u0442\\u044c \\u0432\\u043e\\u043f\\u0440\\u043e\\u0441 \\u043f\\u0440\\u044f\\u043c\\u043e \\u0432 \\u0447\\u0430\\u0442\\u0435, \\u0435\\u0441\\u043b\\u0438 \\u0442\\u0435\\u0431\\u0435 \\u043d\\u0443\\u0436\\u043d\\u0430 \\u0441\\u043f\\u0440\\u0430\\u0432\\u043a\\u0430 \\u043d\\u0430\\u043f\\u0438\\u0448\\u0438 /info.\\n\\u0415\\u0441\\u043b\\u0438 \\u043d\\u0435 \\u043f\\u043e\\u043c\\u043e\\u0433\\u043b\\u043e \\u043d\\u0430\\u043f\\u0438\\u0448\\u0438 /help","entities":[{"offset":77,"length":5,"type":"bot_command"},{"offset":107,"length":5,"type":"bot_command"}]}}'"
+18:18:21 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:18:21 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069251, 'timeout': 20}" and files "None"
+18:18:41 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:18:41 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069251, 'timeout': 20}" and files "None"
+18:19:01 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:19:01 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069251, 'timeout': 20}" and files "None"
+18:19:09 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069251,\n"message":{"message_id":1079,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590286,"text":"/help@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}]}'"
+18:19:09 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:19:09 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет, ', 'parse_mode': 'Alex', 'entities': ' с тобой скоро свяжуться!', 'reply_to_message_id': 1079}" and files "None"
+18:19:09 - api - DEBUG - check_result: 95 - Response for sendMessage: [400] "'{"ok":false,"error_code":400,"description":"Bad Request: unsupported parse_mode"}'"
+18:19:09 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069252, 'timeout': 20}" and files "None"
+18:19:09 - base_events - ERROR - default_exception_handler: 1738 - Task exception was never retrieved
+future: <Task finished name='Task-39' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py:409> exception=BadRequest('Unsupported parse_mode')>
+Traceback (most recent call last):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 417, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 238, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 259, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Users\pashencev.alexandr\Documents\VS материалы по кодингу\TeleBot_support\TeleBot_support\Aiobot.py", line 34, in send_help
+    await message.reply("Привет, ", voprositel, " с тобой скоро свяжуться!")
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\types\message.py", line 1500, in reply
+    return await self.bot.send_message(
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\bot.py", line 314, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\utils\exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Unsupported parse_mode
+18:19:29 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:19:29 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069252, 'timeout': 20}" and files "None"
+18:19:37 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069252,\n"message":{"message_id":1080,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590314,"text":"/help@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}]}'"
+18:19:37 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:19:37 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет, ', 'parse_mode': 'Alex', 'entities': ' с тобой скоро свяжуться!', 'reply_to_message_id': 1080}" and files "None"
+18:19:37 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069253, 'timeout': 20}" and files "None"
+18:19:37 - api - DEBUG - check_result: 95 - Response for sendMessage: [400] "'{"ok":false,"error_code":400,"description":"Bad Request: unsupported parse_mode"}'"
+18:19:37 - base_events - ERROR - default_exception_handler: 1738 - Task exception was never retrieved
+future: <Task finished name='Task-44' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py:409> exception=BadRequest('Unsupported parse_mode')>
+Traceback (most recent call last):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 417, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 238, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 259, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Users\pashencev.alexandr\Documents\VS материалы по кодингу\TeleBot_support\TeleBot_support\Aiobot.py", line 34, in send_help
+    await message.reply("Привет, ", voprositel, " с тобой скоро свяжуться!")
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\types\message.py", line 1500, in reply
+    return await self.bot.send_message(
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\bot.py", line 314, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\utils\exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Unsupported parse_mode
+18:19:43 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069253,\n"message":{"message_id":1081,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590320,"text":"/help","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}]}'"
+18:19:43 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:19:43 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет, ', 'parse_mode': 'Alex', 'entities': ' с тобой скоро свяжуться!', 'reply_to_message_id': 1081}" and files "None"
+18:19:43 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069254, 'timeout': 20}" and files "None"
+18:19:43 - api - DEBUG - check_result: 95 - Response for sendMessage: [400] "'{"ok":false,"error_code":400,"description":"Bad Request: unsupported parse_mode"}'"
+18:19:43 - base_events - ERROR - default_exception_handler: 1738 - Task exception was never retrieved
+future: <Task finished name='Task-49' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py:409> exception=BadRequest('Unsupported parse_mode')>
+Traceback (most recent call last):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 417, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 238, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 259, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Users\pashencev.alexandr\Documents\VS материалы по кодингу\TeleBot_support\TeleBot_support\Aiobot.py", line 34, in send_help
+    await message.reply("Привет, ", voprositel, " с тобой скоро свяжуться!")
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\types\message.py", line 1500, in reply
+    return await self.bot.send_message(
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\bot.py", line 314, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\utils\exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Unsupported parse_mode
+18:20:03 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:20:03 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069254, 'timeout': 20}" and files "None"
+18:20:23 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:20:23 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069254, 'timeout': 20}" and files "None"
+18:20:40 - Aiobot - INFO - <module>: 17 - Hello
+18:20:40 - proactor_events - DEBUG - __init__: 623 - Using proactor: IocpProactor
+18:20:40 - api - DEBUG - make_request: 133 - Make request: "getMe" with data: "{}" and files "None"
+18:20:40 - api - DEBUG - check_result: 95 - Response for getMe: [200] "'{"ok":true,"result":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot","can_join_groups":true,"can_read_all_group_messages":true,"supports_inline_queries":false}}'"
+18:20:40 - executor - INFO - _welcome: 362 - Bot: My_best_aw_bot [@My_best_aw_bot]
+18:20:40 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+18:20:40 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+18:20:40 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': -1, 'timeout': 1}" and files "None"
+18:20:42 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:20:42 - executor - WARNING - _skip_updates: 358 - Updates were skipped successfully.
+18:20:42 - dispatcher - INFO - start_polling: 360 - Start polling.
+18:20:42 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+18:20:42 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+18:20:42 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+18:21:00 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069254,\n"message":{"message_id":1082,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590397,"text":"/help","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}]}'"
+18:21:00 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:21:00 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет, ', 'parse_mode': 'Alex', 'entities': ' с тобой скоро свяжуться!', 'reply_to_message_id': 1082}" and files "None"
+18:21:00 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069255, 'timeout': 20}" and files "None"
+18:21:00 - api - DEBUG - check_result: 95 - Response for sendMessage: [400] "'{"ok":false,"error_code":400,"description":"Bad Request: unsupported parse_mode"}'"
+18:21:00 - base_events - ERROR - default_exception_handler: 1738 - Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py:409> exception=BadRequest('Unsupported parse_mode')>
+Traceback (most recent call last):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 417, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 238, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 259, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Users\pashencev.alexandr\Documents\VS материалы по кодингу\TeleBot_support\TeleBot_support\Aiobot.py", line 34, in send_help
+    await message.reply("Привет, ", voprositel, " с тобой скоро свяжуться!")
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\types\message.py", line 1500, in reply
+    return await self.bot.send_message(
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\bot.py", line 314, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\utils\exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Unsupported parse_mode
+18:21:02 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069255,\n"message":{"message_id":1083,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590399,"text":"/help@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}]}'"
+18:21:02 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:21:02 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет, ', 'parse_mode': 'Alex', 'entities': ' с тобой скоро свяжуться!', 'reply_to_message_id': 1083}" and files "None"
+18:21:02 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069256, 'timeout': 20}" and files "None"
+18:21:02 - api - DEBUG - check_result: 95 - Response for sendMessage: [400] "'{"ok":false,"error_code":400,"description":"Bad Request: unsupported parse_mode"}'"
+18:21:02 - base_events - ERROR - default_exception_handler: 1738 - Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Dispatcher._process_polling_updates() done, defined at C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py:409> exception=BadRequest('Unsupported parse_mode')>
+Traceback (most recent call last):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 417, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 238, in process_updates
+    return await asyncio.gather(*tasks)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\dispatcher.py", line 259, in process_update
+    return await self.message_handlers.notify(update.message)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\dispatcher\handler.py", line 116, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+  File "c:\Users\pashencev.alexandr\Documents\VS материалы по кодингу\TeleBot_support\TeleBot_support\Aiobot.py", line 34, in send_help
+    await message.reply("Привет, ", voprositel, " с тобой скоро свяжуться!")
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\types\message.py", line 1500, in reply
+    return await self.bot.send_message(
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\bot.py", line 314, in send_message
+    result = await self.request(api.Methods.SEND_MESSAGE, payload)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\base.py", line 208, in request
+    return await api.make_request(self.session, self.server, self.__token, method, data, files,
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\bot\api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "C:\Users\pashencev.alexandr\AppData\Local\Programs\Python\Python39\lib\site-packages\aiogram\utils\exceptions.py", line 141, in detect
+    raise cls(description)
+aiogram.utils.exceptions.BadRequest: Unsupported parse_mode
+18:21:23 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:21:23 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069256, 'timeout': 20}" and files "None"
+18:21:38 - Aiobot - INFO - <module>: 17 - Hello
+18:21:38 - proactor_events - DEBUG - __init__: 623 - Using proactor: IocpProactor
+18:21:38 - api - DEBUG - make_request: 133 - Make request: "getMe" with data: "{}" and files "None"
+18:21:38 - api - DEBUG - check_result: 95 - Response for getMe: [200] "'{"ok":true,"result":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot","can_join_groups":true,"can_read_all_group_messages":true,"supports_inline_queries":false}}'"
+18:21:38 - executor - INFO - _welcome: 362 - Bot: My_best_aw_bot [@My_best_aw_bot]
+18:21:38 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+18:21:38 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+18:21:38 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': -1, 'timeout': 1}" and files "None"
+18:21:40 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:21:40 - executor - WARNING - _skip_updates: 358 - Updates were skipped successfully.
+18:21:40 - dispatcher - INFO - start_polling: 360 - Start polling.
+18:21:40 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+18:21:40 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+18:21:40 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+18:21:44 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069256,\n"message":{"message_id":1084,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590441,"text":"/info@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]}}]}'"
+18:21:44 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:21:44 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет! Ты можешь задать вопрос прямо в чате, если тебе нужна справка напиши /info.\nЕсли не помогло напиши /help', 'reply_to_message_id': 1084}" and files "None"
+18:21:44 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069257, 'timeout': 20}" and files "None"
+18:21:44 - api - DEBUG - check_result: 95 - Response for sendMessage: [200] "'{"ok":true,"result":{"message_id":1085,"from":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590441,"reply_to_message":{"message_id":1084,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590441,"text":"/info@My_best_aw_bot","entities":[{"offset":0,"length":20,"type":"bot_command"}]},"text":"\\u041f\\u0440\\u0438\\u0432\\u0435\\u0442! \\u0422\\u044b \\u043c\\u043e\\u0436\\u0435\\u0448\\u044c \\u0437\\u0430\\u0434\\u0430\\u0442\\u044c \\u0432\\u043e\\u043f\\u0440\\u043e\\u0441 \\u043f\\u0440\\u044f\\u043c\\u043e \\u0432 \\u0447\\u0430\\u0442\\u0435, \\u0435\\u0441\\u043b\\u0438 \\u0442\\u0435\\u0431\\u0435 \\u043d\\u0443\\u0436\\u043d\\u0430 \\u0441\\u043f\\u0440\\u0430\\u0432\\u043a\\u0430 \\u043d\\u0430\\u043f\\u0438\\u0448\\u0438 /info.\\n\\u0415\\u0441\\u043b\\u0438 \\u043d\\u0435 \\u043f\\u043e\\u043c\\u043e\\u0433\\u043b\\u043e \\u043d\\u0430\\u043f\\u0438\\u0448\\u0438 /help","entities":[{"offset":77,"length":5,"type":"bot_command"},{"offset":107,"length":5,"type":"bot_command"}]}}'"
+18:21:55 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069257,\n"message":{"message_id":1086,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590452,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}]}'"
+18:21:55 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:21:55 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет! Ты можешь задать вопрос прямо в чате, если тебе нужна справка напиши /info.\nЕсли не помогло напиши /help', 'reply_to_message_id': 1086}" and files "None"
+18:21:55 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069258, 'timeout': 20}" and files "None"
+18:21:55 - api - DEBUG - check_result: 95 - Response for sendMessage: [200] "'{"ok":true,"result":{"message_id":1087,"from":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590452,"reply_to_message":{"message_id":1086,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590452,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]},"text":"\\u041f\\u0440\\u0438\\u0432\\u0435\\u0442! \\u0422\\u044b \\u043c\\u043e\\u0436\\u0435\\u0448\\u044c \\u0437\\u0430\\u0434\\u0430\\u0442\\u044c \\u0432\\u043e\\u043f\\u0440\\u043e\\u0441 \\u043f\\u0440\\u044f\\u043c\\u043e \\u0432 \\u0447\\u0430\\u0442\\u0435, \\u0435\\u0441\\u043b\\u0438 \\u0442\\u0435\\u0431\\u0435 \\u043d\\u0443\\u0436\\u043d\\u0430 \\u0441\\u043f\\u0440\\u0430\\u0432\\u043a\\u0430 \\u043d\\u0430\\u043f\\u0438\\u0448\\u0438 /info.\\n\\u0415\\u0441\\u043b\\u0438 \\u043d\\u0435 \\u043f\\u043e\\u043c\\u043e\\u0433\\u043b\\u043e \\u043d\\u0430\\u043f\\u0438\\u0448\\u0438 /help","entities":[{"offset":77,"length":5,"type":"bot_command"},{"offset":107,"length":5,"type":"bot_command"}]}}'"
+18:22:11 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069258,\n"message":{"message_id":1088,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590468,"text":"/help","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}]}'"
+18:22:11 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+18:22:11 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -578513131, 'text': 'Привет! C тобой скоро свяжуться!', 'reply_to_message_id': 1088}" and files "None"
+18:22:11 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069259, 'timeout': 20}" and files "None"
+18:22:11 - api - DEBUG - check_result: 95 - Response for sendMessage: [200] "'{"ok":true,"result":{"message_id":1089,"from":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590468,"reply_to_message":{"message_id":1088,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-578513131,"title":"Bot_test_group","type":"group","all_members_are_administrators":true},"date":1623590468,"text":"/help","entities":[{"offset":0,"length":5,"type":"bot_command"}]},"text":"\\u041f\\u0440\\u0438\\u0432\\u0435\\u0442! C \\u0442\\u043e\\u0431\\u043e\\u0439 \\u0441\\u043a\\u043e\\u0440\\u043e \\u0441\\u0432\\u044f\\u0436\\u0443\\u0442\\u044c\\u0441\\u044f!"}}'"
+18:22:11 - api - DEBUG - make_request: 133 - Make request: "forwardMessage" with data: "{'chat_id': 125939380, 'from_chat_id': -578513131, 'message_id': 1088, 'disable_notification': <aiogram.types.message.Message object at 0x000002380A17C700>}" and files "None"
+18:22:11 - api - DEBUG - check_result: 95 - Response for forwardMessage: [200] "'{"ok":true,"result":{"message_id":1090,"from":{"id":1703341423,"is_bot":true,"first_name":"My_best_aw_bot","username":"My_best_aw_bot"},"chat":{"id":125939380,"first_name":"Alex","type":"private"},"date":1623590468,"forward_from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"forward_date":1623590468,"text":"/help","entities":[{"offset":0,"length":5,"type":"bot_command"}]}}'"
+18:22:31 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:22:31 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069259, 'timeout': 20}" and files "None"
+18:22:52 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:22:52 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069259, 'timeout': 20}" and files "None"
+18:23:12 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:23:12 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069259, 'timeout': 20}" and files "None"
+18:23:32 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:23:33 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069259, 'timeout': 20}" and files "None"
+18:23:53 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:23:53 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069259, 'timeout': 20}" and files "None"
+18:24:13 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:24:13 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069259, 'timeout': 20}" and files "None"
+18:24:34 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:24:34 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069259, 'timeout': 20}" and files "None"
+18:24:54 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+18:24:54 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069259, 'timeout': 20}" and files "None"

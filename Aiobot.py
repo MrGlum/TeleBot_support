@@ -2,13 +2,19 @@ from aiogram.bot.api import compose_data
 from aiogram.types import chat, message
 import config
 import all_que
-
+import logging
 from aiogram import Bot, Dispatcher, executor, types
 
 API_TOKEN = config.TOKEN
 
-# Configure logging
-# logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.DEBUG, 
+    filename = "mylog.log", 
+    format = "%(asctime)s - %(module)s - %(levelname)s - %(funcName)s: %(lineno)d - %(message)s", 
+    datefmt='%H:%M:%S',
+    )
+
+logging.info('Hello')
 
 # Initialize bot and dispatcher
 bot = Bot(token=API_TOKEN)
@@ -17,17 +23,16 @@ dp = Dispatcher(bot)
 vopros = all_que.otvet
 
 
-@dp.message_handler(commands=['start', 'help', "info", "info@My_best_aw_bot", "help@My_best_aw_bot", "start@My_best_aw_bot"])
-async def send_welcome(message: types.Message):
+@dp.message_handler(commands=['start', "info", "info@My_best_aw_bot", "start@My_best_aw_bot"])
+async def send_info(message: types.Message):
     await message.reply("Привет! Ты можешь задать вопрос прямо в чате, если тебе нужна справка напиши /info.\nЕсли не помогло напиши /help")
+#    await message.forward(125939380, message)
+
+@dp.message_handler(commands=['help', "help@My_best_aw_bot"])
+async def send_help(message: types.Message):
+    voprositel = "Привет, " + str(message.from_user.first_name) + " с тобой скоро свяжутся!"
+    await message.reply(voprositel)
     await message.forward(125939380, message)
-
-
-@dp.message_handler()
-async def TEST_1(message: types.Message):
-    otvetik = compose_data(params=vopros)
-    await message.answer(str(otvetik[1]))
-
 
 # @dp.message_handler()
 # async def SuperMegaBrain(message: types.message):
