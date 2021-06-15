@@ -1,7 +1,6 @@
 from aiogram.bot.api import compose_data
 from aiogram.types import chat, message
 import config
-import all_que
 import logging
 from aiogram import Bot, Dispatcher, executor, types
 
@@ -11,7 +10,7 @@ logging.basicConfig(
     level=logging.DEBUG,
     filename="mylog.log",
     format="%(asctime)s - %(module)s - %(levelname)s - %(funcName)s: %(lineno)d - %(message)s",
-    datefmt='%H:%M:%S',
+    datefmt='%d.%m.%Y %H:%M:%S',
 )
 
 logging.info('Hello')
@@ -40,7 +39,7 @@ async def send_help(message: types.Message):
         str(message.from_user.first_name) + \
         ", с тобой скоро свяжется специалист!"
     await message.reply(voprositel)
-    await message.forward(125939380, message)
+    await message.forward(config.helper_user, message)
 
 @dp.message_handler()
 async def SuperMegaBrain(message: types.message):
@@ -52,3 +51,4 @@ async def SuperMegaBrain(message: types.message):
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
+    
