@@ -10,11 +10,10 @@ from aiogram.utils.exceptions import MessageNotModified
 
 import config
 import logging
-
+import feedparser
 
 API_TOKEN = config.TOKEN
 user_data = {}
-
 
 
 logging.basicConfig(
@@ -30,17 +29,8 @@ logging.info('Hello')
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
-vopros_otvet = { "вопрос1": "ответ1",
-                "вопрос2": "ответ2"}
-
-async def set_commands(bot: Bot):
-    commands = [
-        BotCommand(command="start", description="Запустить бота"),
-        BotCommand(command="info", description="Краткая справка"),
-        BotCommand(command="help", description="Позвать кожанного"),
-        BotCommand(command="numbers_fab", description="Позвать кожанного")
-    ]
-    await bot.set_my_commands(commands)
+vopros_otvet = {"привет": "Ты шо наркоман чтоли?",
+                "алло": "По лбу не дало?"}
 
 # fabnum - префикс, action - название аргумента, которым будем передавать значение
 callback_numbers = CallbackData("fabnum", "action")
@@ -88,14 +78,14 @@ async def callbacks_num_finish_fab(call: types.CallbackQuery):
     await call.answer()
 
 
-@dp.message_handler(commands=['start', "start@My_best_aw_bot"], content_types=["Привет", "Привет@My_best_aw_bot"])
+@dp.message_handler(commands=['start', "start@My_best_aw_bot"])
 async def send_welcome(message: types.Message):
     await message.reply("Привет! Ты можешь задать вопрос прямо в чате, если тебе нужна справка напиши /info.\nЕсли не помогло напиши /help")
 
 
 @dp.message_handler(commands=['info', "info@My_best_aw_bot"])
 async def send_info(message: types.Message):
-    await message.reply("Это справочный бот который сможет ответить на самые часто задаваемые вопросы:\n/start для начала диалога\nБот реагирет на все вопросы в чате, просто задай вопрос.\nТак же ты можешь вести диалог в привате, просто задай вопрос боту в ЛС.\nЕсли не помогло напиши /help")
+    await message.reply("Это справочный бот который сможет ответить на самые часто задаваемые вопросы:\nБот реагирет на все вопросы в чате, просто задай вопрос.\nТак же ты можешь вести диалог в привате, просто задай вопрос боту в ЛС.\nЕсли не получил ответ напиши /help")
 
 
 @dp.message_handler(commands=['help', "help@My_best_aw_bot"])
@@ -106,14 +96,13 @@ async def send_help(message: types.Message):
     await message.reply(voprositel)
     await message.forward(config.helper_user, message)
 
-# @dp.message_handler()
-# async def SuperMegaBrain(message: types.message):
-#     for hit in vopros_otvet.keys():
-#         if message.text == hit:
-#             await message.reply(vopros_otvet.values(hit))
-#         else:
-#             await message.reply("Не понятно!")
+@dp.message_handler()
+async def SuperMegaBrain(message: types.Message):
+    if message.text.lower in vopros_otvet:
+        await message.reply(vopros_otvet(message.text))
+    else:
+        await message.reply("Не понятно!")
+
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
-    
