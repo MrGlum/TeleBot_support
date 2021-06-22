@@ -30,7 +30,10 @@ bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
 vopros_otvet = {"привет": "Ты шо наркоман чтоли?",
-                "алло": "По лбу не дало?"}
+                "алло": "По лбу не дало?",
+                "ну чо зайчики?": "чишотакое",
+                "как вы?": "Уж получше твоего, старый!",
+                "йоу нигга": "WOZZZZZZZAAAAAAAAAAA"}
 
 # fabnum - префикс, action - название аргумента, которым будем передавать значение
 callback_numbers = CallbackData("fabnum", "action")
@@ -38,9 +41,12 @@ callback_numbers = CallbackData("fabnum", "action")
 
 def get_keyboard_fab():
     buttons = [
-        types.InlineKeyboardButton(text="-1", callback_data=callback_numbers.new(action="decr")),
-        types.InlineKeyboardButton(text="+1", callback_data=callback_numbers.new(action="incr")),
-        types.InlineKeyboardButton(text="Подтвердить", callback_data=callback_numbers.new(action="finish"))
+        types.InlineKeyboardButton(
+            text="-1", callback_data=callback_numbers.new(action="decr")),
+        types.InlineKeyboardButton(
+            text="+1", callback_data=callback_numbers.new(action="incr")),
+        types.InlineKeyboardButton(
+            text="Подтвердить", callback_data=callback_numbers.new(action="finish"))
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=2)
     keyboard.add(*buttons)
@@ -96,12 +102,13 @@ async def send_help(message: types.Message):
     await message.reply(voprositel)
     await message.forward(config.helper_user, message)
 
+
 @dp.message_handler()
 async def SuperMegaBrain(message: types.Message):
-    if message.text.lower in vopros_otvet:
-        await message.reply(vopros_otvet(message.text))
+    if message.text.lower() in vopros_otvet.keys():
+        await message.reply(vopros_otvet[message.text.lower()])
     else:
-        await message.reply("Не понятно!")
+        pass
 
 
 if __name__ == '__main__':
