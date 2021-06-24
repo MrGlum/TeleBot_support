@@ -6,7 +6,7 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import BotCommand
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from contextlib import suppress
-from aiogram.utils.exceptions import MessageNotModified
+from aiogram.utils.exceptions import MessageNotModified, PhotoAsInputFileRequired
 
 import config
 import logging
@@ -36,17 +36,25 @@ vopros_otvet = {"хай": "Ты шо наркоман чтоли?",
                 "йоу нигга": "WOZZZZZZZAAAAAAAAAAA"}
 
 # fabnum - префикс, action - название аргумента, которым будем передавать значение
-callback_numbers = CallbackData("fabnum", "action")
+callback_tema = CallbackData("fabnum", "action")
+
+
+@dp.chosen_inline_handler()
+async def chosen_handler(chosen_result: types.ChosenInlineResult):
+    logging.info(f"Chosen query: {chosen_result.query}"
+                 f"from user: {chosen_result.from_user.id}")
 
 
 def get_keyboard_fab():
     buttons = [
         types.InlineKeyboardButton(
-            text="-1", callback_data=callback_numbers.new(action="decr")),
+            text="МТ", callback_data=callback_tema.new(action="one_button")),
         types.InlineKeyboardButton(
-            text="+1", callback_data=callback_numbers.new(action="incr")),
+            text="Супервайзер", callback_data=callback_tema.new(action="two_button")),
         types.InlineKeyboardButton(
-            text="Подтвердить", callback_data=callback_numbers.new(action="finish"))
+            text="Аналитик", callback_data=callback_tema.new(action="three_button")),
+        types.InlineKeyboardButton(
+            text="Статистика", callback_data=callback_tema.new(action="finish"))
     ]
     keyboard = types.InlineKeyboardMarkup(row_width=2)
     keyboard.add(*buttons)
@@ -55,32 +63,35 @@ def get_keyboard_fab():
 
 async def update_num_text_fab(message: types.Message, new_value: int):
     with suppress(MessageNotModified):
-        await message.edit_text(f"Укажите число: {new_value}", reply_markup=get_keyboard_fab())
+        await message.edit_text(f"Вы выбрали тему: {new_value} раз.", reply_markup=get_keyboard_fab())
 
 
-@dp.message_handler(commands="numbers_fab")
+@dp.message_handler(commands="go")
 async def cmd_numbers(message: types.Message):
     user_data[message.from_user.id] = 0
-    await message.answer("Укажите число: 0", reply_markup=get_keyboard_fab())
+    await message.answer("Выберите тему по которой вам необходима помощь:", reply_markup=get_keyboard_fab())
 
 
-@dp.callback_query_handler(callback_numbers.filter(action=["incr", "decr"]))
+@dp.callback_query_handler(callback_tema.filter(action=["two_button", "one_button", "three_button"]))
 async def callbacks_num_change_fab(call: types.CallbackQuery, callback_data: dict):
     user_value = user_data.get(call.from_user.id, 0)
     action = callback_data["action"]
-    if action == "incr":
+    if action == "two_button":
         user_data[call.from_user.id] = user_value + 1
         await update_num_text_fab(call.message, user_value + 1)
-    elif action == "decr":
-        user_data[call.from_user.id] = user_value - 1
-        await update_num_text_fab(call.message, user_value - 1)
+    elif action == "one_button":
+        user_data[call.from_user.id] = user_value + 1
+        await update_num_text_fab(call.message, user_value + 1)
+    elif action == "three_button":
+        user_data[call.from_user.id] = user_value + 1
+        await update_num_text_fab(call.message, user_value + 1)
     await call.answer()
 
 
-@dp.callback_query_handler(callback_numbers.filter(action=["finish"]))
+@dp.callback_query_handler(callback_tema.filter(action=["finish"]))
 async def callbacks_num_finish_fab(call: types.CallbackQuery):
     user_value = user_data.get(call.from_user.id, 0)
-    await call.message.edit_text(f"Итого: {user_value}")
+    await call.message.edit_text(f"Ты ткнул по кнопочкам: {user_value} раз")
     await call.answer()
 
 
@@ -105,10 +116,16 @@ async def send_help(message: types.Message):
 
 @dp.message_handler()
 async def SuperMegaBrain(message: types.Message):
+    print(message)
     if message.text.lower() in vopros_otvet.keys():
         await message.reply(vopros_otvet[message.text.lower()])
     else:
         pass
+
+
+@dp.message_handler()
+async def MagicKartinka(message: types.Message):
+    print(message)
 
 
 if __name__ == '__main__':
