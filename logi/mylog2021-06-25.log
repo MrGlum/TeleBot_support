@@ -38,3 +38,7 @@
 25.06.2021 17:03:29 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
 25.06.2021 17:03:49 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
 25.06.2021 17:03:49 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:04:09 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:04:09 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:04:29 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:04:29 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
