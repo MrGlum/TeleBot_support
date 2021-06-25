@@ -42,3 +42,75 @@
 25.06.2021 17:04:09 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
 25.06.2021 17:04:29 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
 25.06.2021 17:04:29 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:04:49 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:04:49 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:06:40 - Aiobot - INFO - <module>: 27 - Hello
+25.06.2021 17:06:40 - proactor_events - DEBUG - __init__: 623 - Using proactor: IocpProactor
+25.06.2021 17:06:40 - api - DEBUG - make_request: 133 - Make request: "getMe" with data: "{}" and files "None"
+25.06.2021 17:06:40 - api - DEBUG - check_result: 95 - Response for getMe: [200] "'{"ok":true,"result":{"id":1703341423,"is_bot":true,"first_name":"SambQoeBot","username":"My_best_aw_bot","can_join_groups":true,"can_read_all_group_messages":true,"supports_inline_queries":false}}'"
+25.06.2021 17:06:40 - executor - INFO - _welcome: 362 - Bot: SambQoeBot [@My_best_aw_bot]
+25.06.2021 17:06:40 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+25.06.2021 17:06:40 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":1}}'"
+25.06.2021 17:06:40 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': -1, 'timeout': 1}" and files "None"
+25.06.2021 17:06:40 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069769,\n"message":{"message_id":1560,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-410016202,"title":"TEST_bot","type":"group","all_members_are_administrators":true},"date":1624622650,"text":"\\u0425\\u0430\\u0439"}}]}'"
+25.06.2021 17:06:40 - executor - WARNING - _skip_updates: 358 - Updates were skipped successfully.
+25.06.2021 17:06:40 - dispatcher - INFO - start_polling: 360 - Start polling.
+25.06.2021 17:06:40 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+25.06.2021 17:06:40 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":1}}'"
+25.06.2021 17:06:40 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:06:40 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069769,\n"message":{"message_id":1560,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-410016202,"title":"TEST_bot","type":"group","all_members_are_administrators":true},"date":1624622650,"text":"\\u0425\\u0430\\u0439"}}]}'"
+25.06.2021 17:06:40 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+25.06.2021 17:06:40 - api - DEBUG - make_request: 133 - Make request: "sendMessage" with data: "{'chat_id': -410016202, 'text': 'ץוככמף', 'reply_to_message_id': 1560}" and files "None"
+25.06.2021 17:06:40 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069770, 'timeout': 20}" and files "None"
+25.06.2021 17:06:41 - api - DEBUG - check_result: 95 - Response for sendMessage: [200] "'{"ok":true,"result":{"message_id":1561,"from":{"id":1703341423,"is_bot":true,"first_name":"SambQoeBot","username":"My_best_aw_bot"},"chat":{"id":-410016202,"title":"TEST_bot","type":"group","all_members_are_administrators":true},"date":1624622674,"reply_to_message":{"message_id":1560,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-410016202,"title":"TEST_bot","type":"group","all_members_are_administrators":true},"date":1624622650,"text":"\\u0425\\u0430\\u0439"},"text":"\\u0445\\u0435\\u043b\\u043b\\u043e\\u0443"}}'"
+25.06.2021 17:06:55 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[{"update_id":584069770,\n"message":{"message_id":1562,"from":{"id":125939380,"is_bot":false,"first_name":"Alex","language_code":"ru"},"chat":{"id":-410016202,"title":"TEST_bot","type":"group","all_members_are_administrators":true},"date":1624622689,"text":"\\u0421\\u0442\\u043e\\u043f"}}]}'"
+25.06.2021 17:06:55 - dispatcher - DEBUG - start_polling: 397 - Received 1 updates.
+25.06.2021 17:06:55 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069771, 'timeout': 20}" and files "None"
+25.06.2021 17:07:15 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:07:15 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069771, 'timeout': 20}" and files "None"
+25.06.2021 17:07:36 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:07:36 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': 584069771, 'timeout': 20}" and files "None"
+25.06.2021 17:07:56 - Aiobot - INFO - <module>: 26 - Hello
+25.06.2021 17:07:56 - proactor_events - DEBUG - __init__: 623 - Using proactor: IocpProactor
+25.06.2021 17:07:56 - api - DEBUG - make_request: 133 - Make request: "getMe" with data: "{}" and files "None"
+25.06.2021 17:07:56 - api - DEBUG - check_result: 95 - Response for getMe: [200] "'{"ok":true,"result":{"id":1703341423,"is_bot":true,"first_name":"SambQoeBot","username":"My_best_aw_bot","can_join_groups":true,"can_read_all_group_messages":true,"supports_inline_queries":false}}'"
+25.06.2021 17:07:56 - executor - INFO - _welcome: 362 - Bot: SambQoeBot [@My_best_aw_bot]
+25.06.2021 17:07:56 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+25.06.2021 17:07:56 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+25.06.2021 17:07:56 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': -1, 'timeout': 1}" and files "None"
+25.06.2021 17:07:57 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:07:57 - executor - WARNING - _skip_updates: 358 - Updates were skipped successfully.
+25.06.2021 17:07:57 - dispatcher - INFO - start_polling: 360 - Start polling.
+25.06.2021 17:07:57 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+25.06.2021 17:07:57 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+25.06.2021 17:07:57 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:08:17 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:08:17 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:08:38 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:08:38 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:08:58 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:08:58 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:09:18 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:09:18 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:09:38 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:09:38 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:09:58 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:09:58 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:10:28 - Aiobot - INFO - <module>: 25 - Hello
+25.06.2021 17:10:28 - proactor_events - DEBUG - __init__: 623 - Using proactor: IocpProactor
+25.06.2021 17:10:28 - api - DEBUG - make_request: 133 - Make request: "getMe" with data: "{}" and files "None"
+25.06.2021 17:10:28 - api - DEBUG - check_result: 95 - Response for getMe: [200] "'{"ok":true,"result":{"id":1703341423,"is_bot":true,"first_name":"SambQoeBot","username":"My_best_aw_bot","can_join_groups":true,"can_read_all_group_messages":true,"supports_inline_queries":false}}'"
+25.06.2021 17:10:28 - executor - INFO - _welcome: 362 - Bot: SambQoeBot [@My_best_aw_bot]
+25.06.2021 17:10:28 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+25.06.2021 17:10:28 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+25.06.2021 17:10:28 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'offset': -1, 'timeout': 1}" and files "None"
+25.06.2021 17:10:29 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:10:29 - executor - WARNING - _skip_updates: 358 - Updates were skipped successfully.
+25.06.2021 17:10:29 - dispatcher - INFO - start_polling: 360 - Start polling.
+25.06.2021 17:10:29 - api - DEBUG - make_request: 133 - Make request: "getWebhookInfo" with data: "{}" and files "None"
+25.06.2021 17:10:29 - api - DEBUG - check_result: 95 - Response for getWebhookInfo: [200] "'{"ok":true,"result":{"url":"","has_custom_certificate":false,"pending_update_count":0}}'"
+25.06.2021 17:10:29 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:10:49 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:10:49 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
+25.06.2021 17:11:10 - api - DEBUG - check_result: 95 - Response for getUpdates: [200] "'{"ok":true,"result":[]}'"
+25.06.2021 17:11:10 - api - DEBUG - make_request: 133 - Make request: "getUpdates" with data: "{'timeout': 20}" and files "None"
