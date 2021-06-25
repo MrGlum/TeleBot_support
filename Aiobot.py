@@ -1,24 +1,25 @@
 from typing import Text
 from aiogram.utils.callback_data import CallbackData
-from aiogram.bot.api import compose_data
+from gtts import gTTS
 from aiogram.types import chat, message
 from aiogram import Bot, Dispatcher, executor, types
-from aiogram.types import BotCommand
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from contextlib import suppress
 from aiogram.utils.exceptions import MessageNotModified, PhotoAsInputFileRequired
+import gtts
 
 import config
 import logging
 import feedparser
+import speech_recognition as speech_recog
+import datetime
 
 API_TOKEN = config.TOKEN
 user_data = {}
 
-
 logging.basicConfig(
     level=logging.DEBUG,
-    filename="mylog.log",
+    filename= f"logi\mylog{datetime.date.today()}.log",
     format="%(asctime)s - %(module)s - %(levelname)s - %(funcName)s: %(lineno)d - %(message)s",
     datefmt='%d.%m.%Y %H:%M:%S',
 )
@@ -29,7 +30,7 @@ logging.info('Hello')
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
-vopros_otvet = {"хай": "Ты шо наркоман чтоли?",
+vopros_otvet = {"хай": "хеллоу",
                 "алло": "По лбу не дало?",
                 "ну чо зайчики?": "чишотакое",
                 "как вы?": "Уж получше твоего, старый!",
@@ -37,12 +38,6 @@ vopros_otvet = {"хай": "Ты шо наркоман чтоли?",
 
 # fabnum - префикс, action - название аргумента, которым будем передавать значение
 callback_tema = CallbackData("fabnum", "action")
-
-
-@dp.chosen_inline_handler()
-async def chosen_handler(chosen_result: types.ChosenInlineResult):
-    logging.info(f"Chosen query: {chosen_result.query}"
-                 f"from user: {chosen_result.from_user.id}")
 
 
 def get_keyboard_fab():
@@ -102,7 +97,7 @@ async def send_welcome(message: types.Message):
 
 @dp.message_handler(commands=['info', "info@My_best_aw_bot"])
 async def send_info(message: types.Message):
-    await message.reply("Это справочный бот который сможет ответить на самые часто задаваемые вопросы:\nБот реагирет на все вопросы в чате, просто задай вопрос.\nТак же ты можешь вести диалог в привате, просто задай вопрос боту в ЛС.\nЕсли не получил ответ напиши /help")
+    await message.reply("Это справочный бот который сможет ответить на самые часто задаваемые вопросы:\nДля для поиска нужной подсказки напиши /go в чате или в личном сообщении боту.\nЧтобы задать вопрос специалисту, напиши /help в начале сообщения.")
 
 
 @dp.message_handler(commands=['help', "help@My_best_aw_bot"])
@@ -123,9 +118,13 @@ async def SuperMegaBrain(message: types.Message):
         pass
 
 
-@dp.message_handler()
+@dp.message_handler(content_types=['text'])
 async def MagicKartinka(message: types.Message):
-    print(message)
+    print(str(message))
+    obj_text = message.text
+    obj = gTTS(obj_text, lang='en')
+    await message.reply(obj)
+    obj.save('Hello.mp3')
 
 
 if __name__ == '__main__':

@@ -2,11 +2,13 @@ from getpass import getpass
 from logging import root
 from mysql.connector import connect, Error
 
+import config
+
 try:
     with connect(
         host="localhost",
-        user='root',
-        password='MyRoot',
+        user= config.name,
+        password= config.pasSQL,
     ) as connection:
         show_db_query = "SHOW DATABASES"
         with connection.cursor() as cursor:
