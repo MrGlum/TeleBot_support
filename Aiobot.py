@@ -1,16 +1,14 @@
 from typing import Text
 from aiogram.utils.callback_data import CallbackData
 from gtts import gTTS
-from aiogram.types import chat, message
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from contextlib import suppress
 from aiogram.utils.exceptions import MessageNotModified, PhotoAsInputFileRequired
-import gtts
+
 
 import config
 import logging
-import feedparser
 import speech_recognition as speech_recog
 import datetime
 
@@ -34,7 +32,8 @@ vopros_otvet = {"хай": "хеллоу",
                 "алло": "По лбу не дало?",
                 "ну чо зайчики?": "чишотакое",
                 "как вы?": "Уж получше твоего, старый!",
-                "йоу нигга": "WOZZZZZZZAAAAAAAAAAA"}
+                "йоу нигга": "WOZZZZZZZAAAAAAAAAAA",
+                "ну чо как дела": "пока не родила"}
 
 # fabnum - префикс, action - название аргумента, которым будем передавать значение
 callback_tema = CallbackData("fabnum", "action")
