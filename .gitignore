@@ -1,5 +1,6 @@
 config.py
 
+/logi
 .log
 
 __pycache__
