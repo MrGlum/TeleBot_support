@@ -110,24 +110,17 @@ async def send_help(message: types.Message):
 
 @dp.message_handler()
 async def SuperMegaBrain(message: types.Message):
-    print(message.text)
     if message.text.lower() in vopros_otvet.keys():
         await message.reply(vopros_otvet[message.text.lower()])
     else:
         pass
 
 
-def MagicV(obj_text):
-    obj = gTTS(obj_text, lang='ru')
-    return(obj)
-
-print(MagicV('Привет'))
 
 @dp.message_handler()
 async def MVP_otvety(message: types.Message):
-    await message.reply(f'{MagicV(message.text)}.ogg')
-    print(MagicV(message.text))
-
+    await message.reply_voice(gTTS(message.text, lang='ru'))
+    await print(gTTS(message.text, lang='ru'), 'MagicV(message.text)')
 
 
 if __name__ == '__main__':
