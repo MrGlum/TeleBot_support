@@ -119,8 +119,8 @@ async def SuperMegaBrain(message: types.Message):
 
 @dp.message_handler()
 async def MVP_otvety(message: types.Message):
-    await message.reply_voice(gTTS(message.text, lang='ru'))
-    await print(gTTS(message.text, lang='ru'), 'MagicV(message.text)')
+    await message.reply_voice(message.from_user.id, voice=gTTS(message.text, lang='ru'))
+       
 
 
 if __name__ == '__main__':
