@@ -112,15 +112,11 @@ async def send_help(message: types.Message):
 async def SuperMegaBrain(message: types.Message):
     if message.text.lower() in vopros_otvet.keys():
         await message.reply(vopros_otvet[message.text.lower()])
+    elif message.text.lower() == 'виталя':
+        await message.answer(str(message))
     else:
-        pass
-
-
-
-@dp.message_handler()
-async def MVP_otvety(message: types.Message):
-    await message.reply_voice(message.from_user.id, voice=gTTS(message.text, lang='ru'))
-       
+        await message.reply_voice(voice=gTTS(message.text, lang='ru'))
+        gTTS(message.text, lang='ru').save('Jim.ogg')
 
 
 if __name__ == '__main__':
