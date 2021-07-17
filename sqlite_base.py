@@ -5,16 +5,16 @@ cur = conn.cursor()
 
 conn.commit()
 
-try:
-   cur.execute("""INSERT INTO users(userid, fname, lname, gender) 
-      VALUES('00001', 'Alex', 'Smith', 'male');""")
-except:
-   print("NOOOOOOO!")
-
+def dobavit_novoe(userochek):
+   try:
+      cur.execute('INSERT INTO users VALUES(?,?,?,?)', userochek)
+   except:
+      print("NOOOOOOO!")
+   conn.commit()
 
 conn.commit()
 
-if __name__ == '__main__':
+def new_table_data():
    try:
       cur.execute("""CREATE TABLE IF NOT EXISTS users(
       userid INT PRIMARY KEY,
@@ -24,3 +24,10 @@ if __name__ == '__main__':
       """)
    except:
       print("I have this table!")
+   conn.commit()
+
+
+
+print("Results from a LIKE query:")
+sql = "SELECT * FROM users WHERE userid LIKE '12'"
+print(cur.execute(sql).description)
