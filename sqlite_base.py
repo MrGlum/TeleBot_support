@@ -11,7 +11,10 @@ cur.execute("""CREATE TABLE IF NOT EXISTS users(
 """)
 conn.commit()
 
-cur.execute("""INSERT INTO users(userid, fname, lname, gender) 
-   VALUES('00001', 'Alex', 'Smith', 'male');""")
-conn.commit()
+more_users = [('00006', 'Peter', 'Parker', 'Male'), ('00007', 'Bruce', 'Wayne', 'male')]
+#cur.executemany("INSERT INTO users VALUES(?, ?, ?, ?);", more_users)
 
+conn.commit()
+conn.close
+
+conn.execute("DELETE users")
