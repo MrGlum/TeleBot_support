@@ -9,7 +9,6 @@ from aiogram.utils.exceptions import MessageNotModified, PhotoAsInputFileRequire
 
 import config
 import logging
-import speech_recognition as speech_recog
 import datetime
 
 API_TOKEN = config.TOKEN
