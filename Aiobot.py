@@ -44,9 +44,10 @@ def weather_info(city):
     wa = config.WeatherAPI
     city = city.split()[1]
     pogoda = requests.get(
-        f"https://api.weatherbit.io/v2.0/current?city={city}&lang=ru&key={wa}")
-    j_otvet = json.dumps(pogoda)
-    answer = (f'Погода в {city}: {j_otvet}')
+        f"https://api.weatherbit.io/v2.0/current?city={city[1]}&lang=ru&key={wa}")
+    j_otvet = json.dump(pogoda, 'temp')
+    answer = (f'Погода в {city[1]}: {j_otvet}')
+    print(answer)
     return answer
 
 
@@ -110,11 +111,11 @@ async def send_info(message: types.Message):
     await message.reply("Это справочный бот который сможет ответить на самые часто задаваемые вопросы:\nДля для поиска нужной подсказки напиши /go в чате или в личном сообщении боту.\nЧтобы задать вопрос специалисту, напиши /help в начале сообщения.")
 
 
-@dp.message_handler(commands=[])
-@dp.callback_query_handler(callback_tema.filter(action=['Погода', 'погода']))
+@dp.message_handler(commands=['Погода', 'погода'])
+@dp.callback_query_handler()
 async def pogodaka(call: types.Message):
     await call.answer("Введите Ваш город:")
-    await call.reply(weather_info(call.text))
+    await call.answer(weather_info(call.text))
 
 
 @dp.message_handler(commands=['help', "help@My_best_aw_bot"])
