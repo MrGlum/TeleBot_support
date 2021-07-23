@@ -1,4 +1,5 @@
 from typing import Text
+from aiogram.types import message
 from aiogram.utils.callback_data import CallbackData
 from gtts import gTTS
 from aiogram import Bot, Dispatcher, executor, types
@@ -10,8 +11,8 @@ from aiogram.utils.exceptions import MessageNotModified, PhotoAsInputFileRequire
 import config
 import logging
 import datetime
-import requests
-import json
+import pprint
+import Weather_class
 
 API_TOKEN = config.TOKEN
 user_data = {}
@@ -34,22 +35,11 @@ vopros_otvet = {"хай": "хеллоу",
                 "ну чо зайчики?": "чишотакое",
                 "как вы?": "Уж получше твоего, старый!",
                 "йоу нигга": "WOZZZZZZZAAAAAAAAAAA",
-                "ну чо как дела": "пока не родила"}
+                "ну чо как дела": "пока не родила",
+                "ублюдок": "Ублюдок, мать твою, а ну, иди сюда, говно собачье! Что, решил ко мне лезть?! Ты, засранец вонючий, мать твою! А ну, иди сюда, попробуй меня трахнуть! Я тебя сам трахну, ублюдок! Онанист чёртов, будь ты проклят! Иди, идиот, трахать тебя и всю твою семью! Говно собачье, жлоб вонючий, дерьмо, сука, падла! Иди сюда, мерзавец, негодяй, гад! Иди сюда, ты, говно, жопа!"}
 
 # fabnum - префикс, action - название аргумента, которым будем передавать значение
 callback_tema = CallbackData("fabnum", "action")
-
-
-def weather_info(city):
-    wa = config.WeatherAPI
-    city = city.split()[1]
-    pogoda = requests.get(
-        f"https://api.weatherbit.io/v2.0/current?city={city[1]}&lang=ru&key={wa}")
-    j_otvet = json.dump(pogoda, 'temp')
-    answer = (f'Погода в {city[1]}: {j_otvet}')
-    print(answer)
-    return answer
-
 
 def get_keyboard_fab():
     buttons = [
@@ -115,7 +105,7 @@ async def send_info(message: types.Message):
 @dp.callback_query_handler()
 async def pogodaka(call: types.Message):
     await call.answer("Введите Ваш город:")
-    await call.answer(weather_info(call.text))
+    await call.answer(Weather_class.weather_info(message.text))
 
 
 @dp.message_handler(commands=['help', "help@My_best_aw_bot"])
