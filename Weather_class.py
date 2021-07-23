@@ -9,11 +9,14 @@ api.set_granularity('daily')
 
 city = 'Челябинск'
 
+
 def weather_info(city):
-   
-    forecast = api.get_forecast(city=f"{city}", country="RU")
+
+    forecast = api.get_forecast(city=city, country="RU")
     info = forecast.get_series(['temp', 'precip', 'datetime'])
-    pprint.pprint(info[1])
-   # print(f'''{info['datetime']} в {city}\nвероятность осадков {info['precip']}\nтемпература {info['temp']}C''') 
+    otvet = f"""В городе {city} сегодня:\n Температура: {info[1]['temp']}С\n Вероятность осадков: {info[1]['precip']}"""
+    return otvet
+   # print(f'''{info['datetime']} в {city}\nвероятность осадков {info['precip']}\nтемпература {info['temp']}C''')
+
 
 pprint.pprint(weather_info(city))
