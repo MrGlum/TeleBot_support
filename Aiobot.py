@@ -105,7 +105,7 @@ async def send_info(message: types.Message):
 @dp.callback_query_handler()
 async def pogodaka(call: types.Message):
     await call.answer("Введите Ваш город:")
-    await call.answer(Weather_class.weather_info(message.text))
+    await call.answer(Weather_class.weather_info(call.answer))
 
 
 @dp.message_handler(commands=['help', "help@My_best_aw_bot"])
