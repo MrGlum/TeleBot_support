@@ -3,9 +3,8 @@ from aiogram.types import message
 from aiogram.utils.callback_data import CallbackData
 from gtts import gTTS
 from aiogram import Bot, Dispatcher, executor, types
-from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from contextlib import suppress
-from aiogram.utils.exceptions import MessageNotModified, PhotoAsInputFileRequired
+from aiogram.utils.exceptions import MessageNotModified
 
 
 import config
@@ -102,10 +101,9 @@ async def send_info(message: types.Message):
 
 
 @dp.message_handler(commands=['Погода', 'погода'])
-@dp.callback_query_handler()
-async def pogodaka(call: types.Message):
-    await call.answer("Введите Ваш город:")
-    await call.answer(Weather_class.weather_info(call.answer))
+async def pogodkak(message: types.Message):
+    oppa = message.text.split()
+    await message.answer(Weather_class.weather_info(oppa[1]))
 
 
 @dp.message_handler(commands=['help', "help@My_best_aw_bot"])
