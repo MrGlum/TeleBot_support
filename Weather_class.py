@@ -1,3 +1,4 @@
+import datetime
 import config
 
 from weatherbit.api import Api
@@ -13,11 +14,12 @@ api.set_granularity('daily')
 #info[1] выгружает сегодняшний день
 def weather_info(city):
 
-    forecast = api.get_forecast(city=city)
+    forecast = api.get_forecast(city=city[0])
     info = forecast.get_series(['temp', 'precip', 'datetime'])
-    otvet = f"""В городе {city} сегодня:\nТемпература: {info[0]['temp']}\u2103\nВероятность осадков: {(info[0]['precip']*100):2}%"""
+    otvet = f"""В городе {city[0]} {str(info[int(city[1])]['datetime']).split()[0]}:\nТемпература: {info[int(city[1])]['temp']}\u2103\nВероятность осадков: {(info[int(city[1])]['precip']*100)}%"""
     return otvet
 
 if __name__ == "__main__":
-    city = 'Челябинск'
+    city = ['Челябинск', '2']
+    day = 3
     print(weather_info(city))

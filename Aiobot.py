@@ -10,7 +10,6 @@ from aiogram.utils.exceptions import MessageNotModified
 import config
 import logging
 import datetime
-import pprint
 import Weather_class
 
 API_TOKEN = config.TOKEN
@@ -103,7 +102,7 @@ async def send_info(message: types.Message):
 @dp.message_handler(commands=['Погода', 'погода'])
 async def pogodkak(message: types.Message):
     oppa = message.text.split()
-    await message.answer(Weather_class.weather_info(oppa[1]))
+    await message.answer(Weather_class.weather_info(oppa[1], oppa[2]))
 
 
 @dp.message_handler(commands=['help', "help@My_best_aw_bot"])
