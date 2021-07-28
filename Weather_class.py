@@ -16,6 +16,8 @@ api.set_granularity('daily')
 
 def weather_info(city):
 
+    if city[1]: city[1]=city[1]
+    else: city[1] = 0
     forecast = api.get_forecast(city=city[0])
     info = forecast.get_series(['temp', 'precip', 'datetime'])
     norm_data = (str(info[int(city[1])]['datetime']).split()[0])
@@ -25,6 +27,6 @@ def weather_info(city):
 
 
 if __name__ == "__main__":
-    city = ['Челябинск', '2']
+    city = ['Челябинск']
     day = 3
     print(weather_info(city))

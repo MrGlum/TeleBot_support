@@ -34,6 +34,7 @@ vopros_otvet = {"хай": "хеллоу",
                 "как вы?": "Уж получше твоего, старый!",
                 "йоу нигга": "WOZZZZZZZAAAAAAAAAAA",
                 "ну чо как дела": "пока не родила",
+                "бот лох": "а ты точно ИТ директор?",
                 "ублюдок": "Ублюдок, мать твою, а ну, иди сюда, говно собачье! Что, решил ко мне лезть?! Ты, засранец вонючий, мать твою! А ну, иди сюда, попробуй меня трахнуть! Я тебя сам трахну, ублюдок! Онанист чёртов, будь ты проклят! Иди, идиот, трахать тебя и всю твою семью! Говно собачье, жлоб вонючий, дерьмо, сука, падла! Иди сюда, мерзавец, негодяй, гад! Иди сюда, ты, говно, жопа!"}
 
 # fabnum - префикс, action - название аргумента, которым будем передавать значение
@@ -120,10 +121,12 @@ async def SuperMegaBrain(message: types.Message):
         await message.reply(vopros_otvet[message.text.lower()])
     elif message.text.lower() == 'виталя':
         await message.answer(str(message))
-    else:
-        await message.reply_voice(voice=gTTS(message.text, lang='ru'))
-        gTTS(message.text, lang='ru').save('Jim.ogg')
 
-
+@dp.message_handler(commands=['voice'])
+async def SuperVoiceOtvet(message: types.Message):
+    otvet_voice = gTTS(message.text, lang='ru').save(f'Jim{datetime.datetime.now}.ogg')
+    Jim_madness = open('Jim.ogg', 'rb')
+    await bot.send_audio(audio=Jim_madness, reply_to_message_id=message.message_id)
+        
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
