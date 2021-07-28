@@ -1,5 +1,5 @@
 from typing import Text
-from aiogram.types import message
+from aiogram.types import file, message
 from aiogram.utils.callback_data import CallbackData
 from gtts import gTTS
 from aiogram import Bot, Dispatcher, executor, types
@@ -124,9 +124,9 @@ async def SuperMegaBrain(message: types.Message):
 
 @dp.message_handler(commands=['voice'])
 async def SuperVoiceOtvet(message: types.Message):
-    otvet_voice = gTTS(message.text, lang='ru').save(f'Jim{datetime.datetime.now}.ogg')
-    Jim_madness = open('Jim.ogg', 'rb')
-    await bot.send_audio(audio=Jim_madness, reply_to_message_id=message.message_id)
+    otvet_voice = gTTS(message.text, lang='ru')
+    print(otvet_voice)
+    await bot.send_voice(voice=otvet_voice)
         
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
