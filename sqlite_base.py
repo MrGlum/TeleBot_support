@@ -9,7 +9,17 @@ def dobavit_novoe(userochek):
    try:
       cur.execute('INSERT INTO users VALUES(?,?,?,?)', userochek)
    except:
-      print("NOOOOOOO!")
+      return ("Запись с таким номером есть!")
+   conn.commit()
+
+conn.commit()
+conn.close
+
+def obnovit_staroe(userochek):
+   try:
+      cur.execute('UPDATE users VALUES(?,?,?,?)', userochek)
+   except:
+      return ("Что-то пошло не так!")
    conn.commit()
 
 conn.commit()
@@ -27,8 +37,10 @@ def new_table_data():
       print("I have this table!")
    conn.commit()
 
+def zabrat_sql():
+   try:
+      pass
+   except:
+      pass
 
-
-print("Results from a LIKE query:")
-sql = "SELECT * FROM users WHERE userid LIKE '12'"
-print(cur.execute(sql).description)
+sql = dobavit_novoe(['2','Hit', 'Laggers', 'male'])
