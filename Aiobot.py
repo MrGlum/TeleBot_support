@@ -1,7 +1,6 @@
 from typing import Text
 from aiogram.types import file, message
 from aiogram.utils.callback_data import CallbackData
-from gtts import gTTS
 from aiogram import Bot, Dispatcher, executor, types
 from contextlib import suppress
 from aiogram.utils.exceptions import MessageNotModified
@@ -11,6 +10,7 @@ import config
 import logging
 import datetime
 import Weather_class
+import Voice_class
 
 API_TOKEN = config.TOKEN
 user_data = {}
@@ -124,9 +124,7 @@ async def SuperMegaBrain(message: types.Message):
 
 @dp.message_handler(commands=['voice'])
 async def SuperVoiceOtvet(message: types.Message):
-    otvet_voice = gTTS(message.text, lang='ru')
-    print(otvet_voice)
-    await bot.send_voice(voice=otvet_voice)
+    await bot.send_voice(voice=Voice_class.OtVo(message.text))
         
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
