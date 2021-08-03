@@ -123,8 +123,10 @@ async def SuperMegaBrain(message: types.Message):
         await message.answer(str(message))
 
 @dp.message_handler(commands=['voice'])
-async def SuperVoiceOtvet(message: types.Message):
-    await bot.send_voice(voice=Voice_class.OtVo(message.text))
+async def SuperVoiceOtvet(message: types.Voice):
+    print(message.text)
+    voice = open(Voice_class.OtVo(message.text), 'rb')
+    await bot.send_voice(message.forward_from_message_id, voice=voice)
         
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)

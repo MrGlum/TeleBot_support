@@ -1,11 +1,20 @@
 from gtts import gTTS
 
+import subprocess
+import ffmpeg
+
 def OtVo(text) :
     
-    ot_voice = gTTS(text, lang='ru')
-    ot_voice.save('Jim.ogg')
+    print(text)
+    gTTS(text, lang='ru').save('Jim.ogg')
+    subprocess.run([ffmpeg, '-i', 'Jim.ogg', '-acodec', 'libopus', 'Jim.ogg', '-y'], shell=True)
 
-    return
+    with open('Jim.ogg', 'rb') as f:
+        data = f.read()
+
+    file = {'audio': ('Message.ogg', data)}
+    
+    return file
 
 if __name__ == '__main__':
     OtVo('Ублюдок мать твою')
