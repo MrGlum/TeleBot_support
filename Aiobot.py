@@ -9,8 +9,6 @@ from aiogram.utils.exceptions import MessageNotModified
 import config
 import logging
 import datetime
-import Weather_class
-import Voice_class
 
 API_TOKEN = config.TOKEN
 user_data = {}
@@ -27,15 +25,6 @@ logging.info('Hello')
 # Initialize bot and dispatcher
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
-
-vopros_otvet = {"хай": "хеллоу",
-                "алло": "По лбу не дало?",
-                "ну чо зайчики?": "чишотакое",
-                "как вы?": "Уж получше твоего, старый!",
-                "йоу нигга": "WOZZZZZZZAAAAAAAAAAA",
-                "ну чо как дела": "пока не родила",
-                "бот лох": "а ты точно ИТ директор?",
-                "ублюдок": "Ублюдок, мать твою, а ну, иди сюда, говно собачье! Что, решил ко мне лезть?! Ты, засранец вонючий, мать твою! А ну, иди сюда, попробуй меня трахнуть! Я тебя сам трахну, ублюдок! Онанист чёртов, будь ты проклят! Иди, идиот, трахать тебя и всю твою семью! Говно собачье, жлоб вонючий, дерьмо, сука, падла! Иди сюда, мерзавец, негодяй, гад! Иди сюда, ты, говно, жопа!"}
 
 # fabnum - префикс, action - название аргумента, которым будем передавать значение
 callback_tema = CallbackData("fabnum", "action")
@@ -114,13 +103,6 @@ async def send_help(message: types.Message):
     await message.reply(voprositel)
     await message.forward(config.helper_user, message)
 
-
-@dp.message_handler()
-async def SuperMegaBrain(message: types.Message):
-    if message.text.lower() in vopros_otvet.keys():
-        await message.reply(vopros_otvet[message.text.lower()])
-    elif message.text.lower() == 'виталя':
-        await message.answer(str(message))
 
 @dp.message_handler(commands=['voice'])
 async def SuperVoiceOtvet(message: types.Message):
