@@ -89,12 +89,6 @@ async def send_info(message: types.Message):
     await message.reply("Это справочный бот который сможет ответить на самые часто задаваемые вопросы:\nДля для поиска нужной подсказки напиши /go в чате или в личном сообщении боту.\nЧтобы задать вопрос специалисту, напиши /help в начале сообщения.")
 
 
-@dp.message_handler(commands=['Погода', 'погода'])
-async def pogodkak(message: types.Message):
-    oppa = message.text.split()
-    await message.answer(Weather_class.weather_info(oppa[1:]))
-
-
 @dp.message_handler(commands=['help', "help@My_best_aw_bot"])
 async def send_help(message: types.Message):
     voprositel = "Привет, " + \
@@ -103,12 +97,6 @@ async def send_help(message: types.Message):
     await message.reply(voprositel)
     await message.forward(config.helper_user, message)
 
-
-@dp.message_handler(commands=['voice'])
-async def SuperVoiceOtvet(message: types.Message):
-    await message.answer(message.text)
-    voice = Voice_class.OtVo(message.text)
-    await bot.send_voice(message.forward_from_message_id, voice=voice)
-        
+      
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)

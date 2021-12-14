@@ -13,6 +13,7 @@ try:
 
 except sqlite3.Error as error:
     print("Ошибка при подключении к sqlite", error)
+
 finally:
     if (sqlite_connection):
         sqlite_connection.close()
